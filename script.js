@@ -59,7 +59,7 @@ var controlClearButton = () =>{
 };
 
 input_type.addEventListener("change",validationCheck);
-input_title.addEventListener("change",validationCheck);
+input_title.addEventListener("input",validationCheck);
 
 for(var i=0; i<clearables.length;i++) {
     clearables[i].addEventListener("input",controlClearButton);
