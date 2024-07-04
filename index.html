@@ -13,13 +13,13 @@
     <body>
         <div class="container d-flex flex-column border-0 align-items-center min-vh-100 min-vw-100 p-5" >
             <div class="text-center mt-5">
-                <h1 class="mt-4">Semantic Commit message generator</h1>
+                <h1 class="mt-4">Semantic Commit Message Generator</h1>
                 <p class="m-1">write commit messages easily.</p>
                 <p>This generator generates on semantic commit message rule based on <a target="_blank" href="https://www.conventionalcommits.org/">conventional commits.</a></p>
             </div>
-            <form class="d-inline-flex flex-column w-75 align-items-center needs-validation" novalidate>
-                <div class="d-inline-flex justify-content-between align-items-between w-75">
-                    <select id="commit_type" class="form-select d-inline-block w-25 mw-25 my-3 border-0 rounded px-3 py-1 bg-body-secondary" required>
+            <form class="d-inline-flex flex-column w-75 container-xl align-items-center">
+                <div class="d-inline-flex justify-content-between align-items-between w-100">
+                    <select id="commit_type" class="form-select d-inline-block w-25 mw-25 my-3 border-0 rounded px-3 py-1 bg-body-secondary object-fit-scale clearable">
                         <option value="unchosen" selected>(Required) Choose type...</option>
                         <optgroup label="development">
                             <option value="feat">New Feature</option>
@@ -34,44 +34,38 @@
                             <option value="test" class="p-2">Test Commit</option>
                         </optgroup>
                     </select>
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
-                    <input type="text" id="commit_title" class="form-control d-inline-block w-75 mw-75 m-3 me-0 p-3 border rounded" placeholder="(Required) Type commit title">
-                    <div class="valid-feedback">
-                        Looks good!
-                    </div>
+                    <input type="text" id="commit_title" class="form-control d-inline-block w-100 min-vw-75 m-3 me-0 p-3 border rounded clearable" placeholder="(Required) Type commit title">
                 </div>
-                <div class="d-inline-block w-75 mw-75 text-left">
+                
+                <div class="d-inline-block w-100 min-vw-75 text-left">
                     <textarea id="description"></textarea>
                 </div>
             </form>
-            <div class="d-inline-flex align-items-center gap-3  ">
-                <button  type="button" id="generate" class="btn btn-secondary btn-lg disabled" data-bs-toggle="modal" data-bs-target="#result_modal">Fill the blanks to generate</button>
+            <div class="d-inline-flex align-items-center gap-3">
+                <button  type="button" id="clear" class="btn btn-outline-danger disabled btn-lg">clear</button>
+                <button  type="button" id="generate" class="btn btn-secondary btn-lg disabled" data-bs-toggle="modal" data-bs-target="#result_modal">Generate!</button>
                 <div class="form-check">
-                    <input class="form-check-input" data-bs-toggle="collapse" data-bs-target="#advanced" type="checkbox" value="" id="advanced_enabled">
+                    <input class="form-check-input" data-bs-toggle="collapse" data-bs-target="#advanced" type="checkbox" value="" id="advanced_enabled" checked>
                     <label class="form-check-label" for="advanced_enabled">
                       advanced mode
                     </label>
                 </div>
             </div>
-
-            <div class="collapse" id="advanced">
-                <div class="d-inline-flex flex-row gap-5 mt-3 justify-content-center align-items-center w-100">
+            <div class="collapse show" id="advanced">
+                <div class="d-inline-flex flex-row gap-5 justify-content-center align-items-center w-100">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="breaking">
-                        <label class="form-check-label" for="breaking">
+                        <input class="form-check-input clearable" type="checkbox" value="" id="advanced_breaking">
+                        <label class="form-check-label" for="advanced_breaking">
                             breaking change!
                         </label>
                     </div>
                     <div class="form-floating">
-                        <input type="number" class="form-control" id="commit_issue" >
-                        <label for="commit_issue">(optional) issue #</label>
+                        <input type="number" class="form-control clearable" id="advanced_issue" >
+                        <label for="advanced_issue">(optional) issue #</label>
                     </div>
-                    <input type="text" id="commit_scope" class="form-control d-inline-block w-25 mw-25 m-3 me-0 p-3 border rounded" placeholder="(Optional) commit scope">
+                    <input type="text" id="advanced_scope" class="form-control d-inline-block w-25 mw-25 ms-3 my-3 p-3 border rounded clearable" placeholder="(Optional) scope">
                 </div>
               </div>
-            
         </div>
 
         <div class="modal fade" id="result_modal" tabindex="-1" aria-hidden="true">
