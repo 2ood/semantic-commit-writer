@@ -6,6 +6,7 @@ window.onload = () => {
 const input_type = document.getElementById("commit_type");
 const input_title = document.getElementById("commit_title");
 
+const advanced_tab = document.getElementById("advanced");
 const advanced_enabled = document.getElementById("advanced_enabled");
 const advanced_breaking = document.getElementById("advanced_breaking");
 const advanced_issue = document.getElementById("advanced_issue");
@@ -153,6 +154,7 @@ var clearInputs  = () => {
         button_clear.classList.add("disabled");
         button_clear.classList.add("btn-outline-danger");
         button_clear.classList.remove("btn-danger");
+        advanced_tab.classList.remove("show");
 
         validationCheck();
     }
