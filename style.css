@@ -15,6 +15,41 @@ html {
 scrollbar-width: none;  /* Firefox */
 }
 
+.floating-container {
+    width: 60%;
+    margin : 0 auto;
+    box-shadow: var(--bs-secondary-color);
+}
+
+@media (max-width: 1400px) {
+    :root{
+        --bs-body-font-size : 12px;
+    }
+
+    .floating-container {
+        width : 80%;
+    }
+
+    .rows {
+        flex-wrap : wrap;
+    }
+}
+
+@media (max-width : 900px) {
+    .floating-container {
+        width : 90%;
+        margin : 30px auto;
+    }
+
+    .rows {
+        width : 100%;
+    }
+}
+
+.w-90 {
+    width : 90%;
+}
+
 option {
     display : inline-block;
     line-height: 2em;
@@ -31,4 +66,8 @@ select {
 
 select::-ms-expand {
     appearance: none;
+}
+
+#advanced_scope {
+    max-width : 200px;
 }

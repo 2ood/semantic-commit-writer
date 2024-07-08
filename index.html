@@ -2,71 +2,75 @@
 <html>
     <head>
         <title>Semantic Commit Message Generator</title>
-        <link rel="stylesheet" href="./style.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="./favicon.svg" />
+        <link rel="stylesheet" href="./style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
     </head>
     <body>
-        <div class="container d-flex flex-column border-0 align-items-center min-vh-100 min-vw-100 p-5" >
-            <div class="text-center mt-5">
-                <h1 class="mt-2">Semantic Commit Message Generator</h1>
-                <p class="m-1">write commit messages easily.</p>
-                <p>This generator generates on semantic commit message rule based on <a target="_blank" href="https://www.conventionalcommits.org/">conventional commits.</a></p>
-                <p><a class="text-decoration-none text-body-secondary" href="https://github.com/2ood">@2ood.</a></p>
-            </div>
-            <form class="d-inline-flex flex-column w-75 container-xl align-items-center">
-                <div class="d-inline-flex justify-content-between align-items-between w-100">
-                    <select id="commit_type" class="form-select d-inline-block w-25 mw-25 my-3 border-0 rounded px-3 py-1 bg-body-secondary object-fit-scale clearable">
-                        <option value="unchosen" selected>(Required) Choose type...</option>
-                        <optgroup label="development">
-                            <option value="feat">New Feature</option>
-                            <option value="fix">Bug fixed</option>
-                            <option value="style">Styling</option>
-                            <option value="build">Build</option>
-                            <option value="publish">Publish</option>
-                        </optgroup>
-                        <optgroup label="maintenance">
-                            <option value="docs">Documentation</option>
-                            <option value="refactor">Refactorization</option>
-                            <option value="test" class="p-2">Test Commit</option>
-                        </optgroup>
-                    </select>
-                    <input type="text" id="commit_title" class="form-control d-inline-block w-100 min-vw-75 m-3 me-0 p-3 border rounded clearable" placeholder="(Required) Type commit title">
+        <div class="container d-inline-flex flex-column align-items-center justify-content-center min-vw-100 min-vh-100 bg-secondary-subtle" >
+            <div class="d-inline-flex flex-column border rounded-5 align-items-center p-3 bg-light floating-container">
+                <div class="text-center mt-2">
+                    <h1 class="mt-2">Semantic Commit Message Generator</h1>
+                    <p class="m-1">write commit messages easily.</p>
+                    <p>This generator generates on semantic commit message rule based on <a target="_blank" href="https://www.conventionalcommits.org/">conventional commits.</a></p>
+                    <p><a class="text-decoration-none text-body-secondary" href="https://github.com/2ood">@2ood.</a></p>
                 </div>
-                
-                <div class="d-inline-block w-100 min-vw-75 text-left">
-                    <textarea id="description"></textarea>
-                </div>
-            </form>
-            <div class="d-inline-flex align-items-center gap-3">
-                <button  type="button" id="clear" class="btn btn-outline-danger disabled btn-lg">clear</button>
-                <button  type="button" id="generate" class="btn btn-secondary btn-lg disabled" data-bs-toggle="modal" data-bs-target="#result_modal">Generate!</button>
-                <div class="form-check">
-                    <input class="form-check-input" data-bs-toggle="collapse" data-bs-target="#advanced" type="checkbox" value="" id="advanced_enabled" checked>
-                    <label class="form-check-label" for="advanced_enabled">
-                      advanced mode
-                    </label>
-                </div>
-            </div>
-            <div class="collapse show" id="advanced">
-                <div class="d-inline-flex flex-row gap-5 justify-content-center align-items-center w-100">
+                <form class="d-inline-flex flex-column w-100 container-xl align-items-center">
+                    <div class="d-inline-flex justify-content-between align-items-between w-90">
+                        <select id="commit_type" class="form-select d-inline-block w-25 mw-25 my-3 border-0 rounded px-3 py-1 bg-body-secondary object-fit-scale clearable">
+                            <option value="unchosen" selected>(Required) Choose Type...</option>
+                            <optgroup label="development">
+                                <option value="feat">✨ New Feature</option>
+                                <option value="fix">🐞 Bug fixed</option>
+                                <option value="style">🎨 Styling</option>
+                                <option value="build">⚒️ Build</option>
+                                <option value="publish">🌎 Publish</option>
+                                <option value="deploy">🚀 Deploy</option>
+                                <option value="version">🏷️ Version bump</option>
+                            </optgroup>
+                            <optgroup label="maintenance">
+                                <option value="docs">📚 Documentation</option>
+                                <option value="refactor">🏗️ Refactorization</option>
+                                <option value="test" class="p-2">🍀 Test Commit</option>
+                            </optgroup>
+                        </select>
+                        <input type="text" id="commit_title" class="form-control d-inline-block w-100 m-3 me-0 p-3 border rounded clearable" placeholder="(Required) Type commit title">
+                    </div>
+                    <div class="d-inline-block w-90 text-left">
+                        <textarea id="description"></textarea>
+                    </div>
+                </form>
+                <div class="rows d-inline-flex justify-content-center align-items-center gap-3">
+                    <button  type="button" id="clear" class="btn btn-outline-danger disabled btn-lg">clear</button>
+                    <button  type="button" id="generate" class="btn btn-secondary btn-lg disabled" data-bs-toggle="modal" data-bs-target="#result_modal">Generate!</button>
                     <div class="form-check">
-                        <input class="form-check-input clearable" type="checkbox" value="" id="advanced_breaking">
-                        <label class="form-check-label" for="advanced_breaking">
-                            breaking change!
+                        <input class="form-check-input" data-bs-toggle="collapse" data-bs-target="#advanced" type="checkbox" value="" id="advanced_enabled" checked>
+                        <label class="form-check-label" for="advanced_enabled">
+                          advanced mode
                         </label>
                     </div>
-                    <div class="form-floating">
-                        <input type="number" class="form-control clearable" id="advanced_issue" >
-                        <label for="advanced_issue">(optional) issue #</label>
-                    </div>
-                    <input type="text" id="advanced_scope" class="form-control d-inline-block w-25 mw-25 ms-3 my-3 p-3 border rounded clearable" placeholder="(Optional) scope">
                 </div>
-              </div>
+                <div class="collapse show w-90" id="advanced">
+                    <div class="rows d-inline-flex flex-row col-gap-5 gap-3 justify-content-center align-items-center w-100 mt-3">
+                        <div class="form-check">
+                            <input class="form-check-input clearable" type="checkbox" value="" id="advanced_breaking">
+                            <label class="form-check-label" for="advanced_breaking">
+                                breaking change!
+                            </label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="number" class="form-control clearable" id="advanced_issue" >
+                            <label for="advanced_issue">(optional) issue #</label>
+                        </div>
+                        <input type="text" id="advanced_scope" class="form-control d-inline-block p-3 border rounded clearable" placeholder="(Optional) scope">
+                    </div>
+                  </div>
+            </div>
         </div>
 
         <div class="modal fade" id="result_modal" tabindex="-1" aria-hidden="true">
