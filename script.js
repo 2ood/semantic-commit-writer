@@ -17,6 +17,9 @@ const button_clear = document.getElementById("clear");
 
 const clearables = document.getElementsByClassName("clearable");
 
+const command_display = document.getElementById("command_display");
+const spinner = document.getElementById("spinner");
+
 /**
  * @name validationCheck
  * @function
@@ -83,12 +86,34 @@ var controlClearButton = () =>{
  */
 
 var generateCommand = () =>{
-    let type = input_type.value;
-    let issue = input_issue.value;
-    let title = input_title.value;
-    let desciption = easyMDE.value();
+    const type = input_type.value;
+    const title = input_title.value;
+    const desciption = easyMDE.value();
 
-    console.log(type+" "+issue+" "+title+" "+desciption);
+    const is_advanced_mode = advanced_enabled.checked;
+    let breaking = "";
+    let scope = "";
+    let issue = "";
+
+    console.log(advanced_breaking.checked);
+    console.log(advanced_scope.value);
+    console.log(advanced_issue.value);
+
+    if(is_advanced_mode) {
+        if(advanced_breaking.checked) breaking = "!";
+        if(advanced_scope.value.length>0) scope = `(${advanced_scope.value})`;
+        if(advanced_issue.value.length>0) issue = `(#${advanced_issue.value})`;
+    }
+
+    let command_desc = "";
+    if (desciption.length>0) command_desc=" -m \""+desciption+"\"";
+    
+    const command_title = type+scope+breaking+ " : "+title+issue;
+    const full_command = "git commit -m \""+command_title+"\""+command_desc;
+
+    spinner.classList.add("visually-hidden");
+    command_display.value=full_command;
+    command_display.classList.remove("visually-hidden");
 };
 
 
@@ -121,6 +146,8 @@ var clearInputs  = () => {
         button_clear.classList.add("disabled");
         button_clear.classList.add("btn-outline-danger");
         button_clear.classList.remove("btn-danger");
+
+        validationCheck();
     }
 }
 
@@ -134,7 +161,7 @@ for(var i=0; i<clearables.length;i++) {
     clearables[i].addEventListener("input",controlClearButton);
 }
 
-// linking buttons to its executing functions.
+// linking buttons to their corresponding executing functions.
 button_generate.addEventListener("click",generateCommand);
 button_copy.addEventListener("click",copyCommand);
 button_clear.addEventListener("click",clearInputs);
