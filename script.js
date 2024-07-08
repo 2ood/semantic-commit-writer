@@ -100,10 +100,6 @@ var generateCommand = () =>{
     let scope = "";
     let issue = "";
 
-    console.log(advanced_breaking.checked);
-    console.log(advanced_scope.value);
-    console.log(advanced_issue.value);
-
     if(is_advanced_mode) {
         if(advanced_breaking.checked) breaking = "!";
         if(advanced_scope.value.length>0) scope = `(${advanced_scope.value})`;
@@ -172,8 +168,6 @@ var reinitailizeModal = ()=>{
     command_display.value="If you see this, there was an error in finishing generation.";
     command_display.classList.add("visually-hidden");
     spinner.classList.remove("visually-hidden");
-
-    console.log("successfully reinitialized modal");
 }
 
 // adding event listeners to input doms.
