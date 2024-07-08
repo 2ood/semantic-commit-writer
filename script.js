@@ -145,6 +145,7 @@ var clearInputs  = () => {
 
         easyMDE.value("");
 
+        advanced_enabled.checked = false;
         advanced_breaking.checked = false;
         advanced_issue.value = "";
         advanced_scope.value = "";
