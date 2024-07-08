@@ -8,7 +8,7 @@ This website generates semantic commit messages easily. This generator generates
 
 ![main](./img/main-page.png)
 
-# Write your commit messages easily.
+## Write your commit messages easily.
 This generator is useful in following aspects:
 
 1. **Follow commit conventions** : any other programmers can easily understand your commit.
@@ -18,14 +18,16 @@ This generator is useful in following aspects:
 5. **fast, light-weight** : it is built with bootstrap5, and other codes are written in vanilla javascript. 
 6. Lively deployed by **Github page**.
 
-# How to use
-1. Fill in the inputs.
+## How to use
+### 1. Fill in the inputs.
+
 Commit type and commit title is required. Other fields are optional.
 If you check advanced mode, you can add more complex commit commands.
 
 ![main](./img/main-page.png)
 
-2. Generate!
+### 2. Generate!
+
 Once required fields are filled out, `generate` button will be enabled.
 When you press it, a modal will pop up, showing the generated command.
 You can copy the generated command with `Copy command` button.
@@ -40,6 +42,6 @@ $ ## paste what you copied ##
 $ git push
 ```
 
-# Used Tech / Dependencies
+## Used Tech / Dependencies
 * [bootstrap5](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
 * [easy-markdown-editor](https://github.com/Ionaru/easy-markdown-editor)
