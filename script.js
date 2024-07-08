@@ -17,8 +17,13 @@ const button_clear = document.getElementById("clear");
 
 const clearables = document.getElementsByClassName("clearable");
 
+const modal = document.getElementById("result_modal");
 const command_display = document.getElementById("command_display");
+const modal_title = document.getElementById("modal_title");
 const spinner = document.getElementById("spinner");
+
+//global param
+let full_command = "";
 
 /**
  * @name validationCheck
@@ -109,10 +114,11 @@ var generateCommand = () =>{
     if (desciption.length>0) command_desc=" -m \""+desciption+"\"";
     
     const command_title = type+scope+breaking+ " : "+title+issue;
-    const full_command = "git commit -m \""+command_title+"\""+command_desc;
+    full_command = "git commit -m \""+command_title+"\""+command_desc;
 
     spinner.classList.add("visually-hidden");
     command_display.value=full_command;
+    modal_title.textContent="Command is generated!";
     command_display.classList.remove("visually-hidden");
 };
 
@@ -123,7 +129,11 @@ var generateCommand = () =>{
  * @description function for copying the generated command to clipboard.
  */
 var copyCommand = () =>{
-
+    navigator.clipboard.writeText(full_command).then(()=>{
+        const popover = bootstrap.Popover.getOrCreateInstance("#copy");
+        popover.show();
+        setTimeout(()=>{popover.hide();},2000);
+    });
 }
 
 /**
@@ -151,6 +161,21 @@ var clearInputs  = () => {
     }
 }
 
+/**
+ * @name reinitailizeModal
+ * @function
+ * @description turns back the modal into default state.
+ */
+
+var reinitailizeModal = ()=>{
+    modal_title.textContent="Generating...";
+    command_display.value="If you see this, there was an error in finishing generation.";
+    command_display.classList.add("visually-hidden");
+    spinner.classList.remove("visually-hidden");
+
+    console.log("successfully reinitialized modal");
+}
+
 // adding event listeners to input doms.
 input_type.addEventListener("change",validationCheck);
 input_title.addEventListener("input",validationCheck);
@@ -165,4 +190,7 @@ for(var i=0; i<clearables.length;i++) {
 button_generate.addEventListener("click",generateCommand);
 button_copy.addEventListener("click",copyCommand);
 button_clear.addEventListener("click",clearInputs);
+
+// modal functionality stabilization.
+modal.addEventListener("hidden.bs.modal",reinitailizeModal);
 }
