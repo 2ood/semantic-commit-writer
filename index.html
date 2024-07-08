@@ -47,8 +47,8 @@
                     </div>
                 </form>
                 <div class="rows d-inline-flex justify-content-center align-items-center gap-3">
-                    <button  type="button" id="clear" class="btn btn-outline-danger disabled btn-lg">clear</button>
-                    <button  type="button" id="generate" class="btn btn-secondary btn-lg disabled" data-bs-toggle="modal" data-bs-target="#result_modal">Generate!</button>
+                    <button type="button" id="clear" class="btn btn-outline-danger disabled btn-lg">clear</button>
+                    <button type="button" id="generate" class="btn btn-secondary btn-lg disabled" data-bs-toggle="modal" data-bs-target="#result_modal">Generate!</button>
                     <div class="form-check">
                         <input class="form-check-input" data-bs-toggle="collapse" data-bs-target="#advanced" type="checkbox" value="" id="advanced_enabled">
                         <label class="form-check-label" for="advanced_enabled">
@@ -85,7 +85,7 @@
                     <div id="spinner" class="spinner-border" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>
-                    <input id="command_display" class="form-control visually-hidden bg-secondary-subtle" type="text" readonly>
+                    <input id="command_display" class="form-control visually-hidden bg-secondary-subtle text-truncate" type="text" readonly>
                 </div>
                 <div class="modal-footer">
                   <button type="button" id="copy" class="btn btn-primary" data-bs-custom-class="copy-button-popover" data-bs-container="body" data-bs-placement="top" data-bs-content="Copied!">Copy command</button>
